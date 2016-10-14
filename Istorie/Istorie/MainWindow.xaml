@@ -21,7 +21,7 @@
                 <Label HorizontalAlignment="Center">Parola</Label>
                 <PasswordBox Width="150" Height="25" x:Name="parolaUtilizator"></PasswordBox>
                 <Button Margin="0,20,0,0" Width="100" Height="31" x:Name="connect_bttn" Click="connect_bttn_Click">Conectare</Button>
-                <Label x:Name="registerLabel" Margin="120,10,0,0" MouseDoubleClick="registerLabel_MouseDoubleClick">Nu ai cont? Dublu click aici</Label>
+                <Label x:Name="registerLabel" Margin="118,10,0,0" MouseDoubleClick="registerLabel_MouseDoubleClick">Nu ai cont? Dublu click aici</Label>
             </StackPanel>
         </Grid>
     </Grid>

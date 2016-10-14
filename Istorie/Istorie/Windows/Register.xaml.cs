@@ -53,7 +53,7 @@ namespace Istorie.Windows
                     User user = new User()
                     {
                         name = numeUtilizator.Text,
-                        fullName = numeUtilizator.Text,
+                        fullName = numeCompletUtilizator.Text,
                         pass = parolaUtilizator.Password,
                         email = emailUtilizator.Text,
                         birthday = dataNasterii.SelectedDate,

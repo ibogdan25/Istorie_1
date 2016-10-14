@@ -23,7 +23,9 @@ namespace Istorie.Windows
         public MeniuPrincipal()
         {
             InitializeComponent();
-            mesajDeIntampinare.Content = mesajDeIntampinare.Content + UserActual.user.fullName+"!";
+            dataEveniment.SelectedDate = DateTime.Now;
+            incarcaEvenimente();
+            mesajDeIntampinare.Content = mesajDeIntampinare.Content + "" + UserActual.user.fullName + "!";
             if (UserActual.user.role != (int)User.rol.Admin)
             {
                 meniu.Children.Remove(addEveniment);
@@ -36,26 +38,28 @@ namespace Istorie.Windows
             AddEveniment form = new AddEveniment();
             this.Hide();
             form.ShowDialog();
+            incarcaEvenimente();
             this.Show();
             
         }
 
         private void dataEveniment_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            using(IstorieEntities context=new IstorieEntities())
+            incarcaEvenimente();
+        }
+        public void incarcaEvenimente()
+        {
+            using (IstorieEntities context = new IstorieEntities())
             {
                 evenimente.Children.Clear();
                 var query = (from x in context.Evenimentes
-                            where x.data.Value.Month == dataEveniment.SelectedDate.Value.Month && x.data.Value.Day == dataEveniment.SelectedDate.Value.Day
-                            select x).ToList();
-                foreach(var eveniment in query)
+                             where x.data.Value.Month == dataEveniment.SelectedDate.Value.Month && x.data.Value.Day == dataEveniment.SelectedDate.Value.Day
+                             select x).ToList();
+                foreach (var eveniment in query)
                 {
                     //Label
                     Label label = new Label();
-                    label.Margin = new Thickness(0);
                     TextBlock text = new TextBlock();
-                    text.Margin = new Thickness(0);
-                    text.Padding = new Thickness(0);
                     text.Text = eveniment.data.Value.Year + " : " + eveniment.text;
                     text.TextWrapping = TextWrapping.Wrap;
                     label.Content = text;
