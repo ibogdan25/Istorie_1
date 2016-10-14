@@ -12,14 +12,11 @@ namespace Istorie
     using System;
     using System.Collections.Generic;
     
-    public partial class Clase
+    public partial class Evenimente
     {
-        public int clasaId { get; set; }
-        public string name { get; set; }
-        public int uniqueCode { get; set; }
-        public string descriere { get; set; }
-        public int userId { get; set; }
-    
-        public virtual User User { get; set; }
+        public int evenimentId { get; set; }
+        public Nullable<System.DateTime> data { get; set; }
+        public string text { get; set; }
+        public Nullable<bool> isDHr { get; set; }
     }
 }

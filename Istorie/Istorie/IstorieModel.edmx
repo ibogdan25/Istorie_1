@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IstorieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IstorieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clase">
           <Key>
             <PropertyRef Name="clasaId" />
@@ -14,6 +14,15 @@
           <Property Name="uniqueCode" Type="int" Nullable="false" />
           <Property Name="descriere" Type="nvarchar(max)" Nullable="false" />
           <Property Name="userId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evenimente">
+          <Key>
+            <PropertyRef Name="evenimentId" />
+          </Key>
+          <Property Name="evenimentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="isDHr" Type="bit" />
         </EntityType>
         <EntityType Name="Intrebari">
           <Key>
@@ -50,6 +59,7 @@
         </Association>
         <EntityContainer Name="IstorieModelStoreContainer">
           <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evenimente" EntityType="Self.Evenimente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Intrebari" EntityType="Self.Intrebari" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Clase_User" Association="Self.FK_Clase_User">
@@ -57,8 +67,7 @@
             <End Role="Clase" EntitySet="Clase" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IstorieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -115,7 +124,17 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Clase" EntitySet="Clases" />
           </AssociationSet>
+          <EntitySet Name="Evenimentes" EntityType="IstorieModel.Evenimente" />
         </EntityContainer>
+        <EntityType Name="Evenimente">
+          <Key>
+            <PropertyRef Name="evenimentId" />
+          </Key>
+          <Property Name="evenimentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isDHr" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -153,6 +172,16 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="birthday" ColumnName="birthday" />
                 <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evenimentes">
+            <EntityTypeMapping TypeName="IstorieModel.Evenimente">
+              <MappingFragment StoreEntitySet="Evenimente">
+                <ScalarProperty Name="isDHr" ColumnName="isDHr" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="evenimentId" ColumnName="evenimentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

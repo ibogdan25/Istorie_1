@@ -53,5 +53,15 @@
       <End Role="User" EntitySet="Users" />
       <End Role="Clase" EntitySet="Clases" />
     </AssociationSet>
+    <EntitySet Name="Evenimentes" EntityType="IstorieModel.Evenimente" />
   </EntityContainer>
+  <EntityType Name="Evenimente">
+    <Key>
+      <PropertyRef Name="evenimentId" />
+    </Key>
+    <Property Name="evenimentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="data" Type="DateTime" Precision="3" />
+    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isDHr" Type="Boolean" />
+  </EntityType>
 </Schema>

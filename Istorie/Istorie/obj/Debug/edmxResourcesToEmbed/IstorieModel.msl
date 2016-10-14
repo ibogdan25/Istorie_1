@@ -35,5 +35,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Evenimentes">
+      <EntityTypeMapping TypeName="IstorieModel.Evenimente">
+        <MappingFragment StoreEntitySet="Evenimente">
+          <ScalarProperty Name="isDHr" ColumnName="isDHr" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="evenimentId" ColumnName="evenimentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

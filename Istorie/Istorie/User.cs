@@ -31,7 +31,7 @@ namespace Istorie
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Clase> Clases { get; set; }
-        enum rol
+        public enum rol
         {
             Elev = 1,
             Profesor = 2,

@@ -10,6 +10,15 @@
     <Property Name="descriere" Type="nvarchar(max)" Nullable="false" />
     <Property Name="userId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Evenimente">
+    <Key>
+      <PropertyRef Name="evenimentId" />
+    </Key>
+    <Property Name="evenimentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data" Type="datetime" />
+    <Property Name="text" Type="nvarchar(max)" />
+    <Property Name="isDHr" Type="bit" />
+  </EntityType>
   <EntityType Name="Intrebari">
     <Key>
       <PropertyRef Name="intrebareId" />
@@ -45,6 +54,7 @@
   </Association>
   <EntityContainer Name="IstorieModelStoreContainer">
     <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Evenimente" EntityType="Self.Evenimente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Intrebari" EntityType="Self.Intrebari" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Clase_User" Association="Self.FK_Clase_User">

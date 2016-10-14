@@ -48,18 +48,24 @@ namespace Istorie.Windows
             }
             using(IstorieEntities context=new IstorieEntities())
             {
-                int rolul = (bool)elevRadio.IsChecked ? 1 : 2;
-                User user = new User()
+                try {
+                    int rolul = (bool)elevRadio.IsChecked ? 1 : 2;
+                    User user = new User()
+                    {
+                        name = numeUtilizator.Text,
+                        fullName = numeUtilizator.Text,
+                        pass = parolaUtilizator.Password,
+                        email = emailUtilizator.Text,
+                        birthday = dataNasterii.SelectedDate,
+                        role = rolul
+                    };
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                }
+                catch(Exception ex)
                 {
-                    name = numeUtilizator.Text,
-                    fullName=numeUtilizator.Text,
-                    pass = parolaUtilizator.Password,
-                    email=emailUtilizator.Text,
-                    birthday = dataNasterii.SelectedDate,
-                    role = rolul
-                };
-                context.Users.Add(user);
-                context.SaveChanges();
+                    MessageBox.Show(ex.ToString());
+                }
                 MessageBox.Show("Utilizator adaugat");
             }
 

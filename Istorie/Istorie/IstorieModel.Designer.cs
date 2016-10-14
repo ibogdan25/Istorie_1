@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Bogdan\Documents\GitHub\Istorie_1\Istorie\Istorie\IstorieModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Bogdan.Ilie\Documents\GitHub\Istorie_1\Istorie\Istorie\IstorieModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

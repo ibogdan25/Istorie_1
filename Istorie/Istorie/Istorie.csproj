@@ -107,6 +107,9 @@
     <Compile Include="Clase.cs">
       <DependentUpon>IstorieModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Evenimente.cs">
+      <DependentUpon>IstorieModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Intrebari.cs">
       <DependentUpon>IstorieModel.tt</DependentUpon>
     </Compile>
@@ -134,6 +137,9 @@
     <Compile Include="Windows\AddEditCerintaGrila.xaml.cs">
       <DependentUpon>AddEditCerintaGrila.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddEveniment.xaml.cs">
+      <DependentUpon>AddEveniment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ListaIntrebari.xaml.cs">
       <DependentUpon>ListaIntrebari.xaml</DependentUpon>
     </Compile>
@@ -156,6 +162,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\AddEditCerintaGrila.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddEveniment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

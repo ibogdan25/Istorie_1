@@ -28,5 +28,6 @@ namespace Istorie
         public virtual DbSet<Clase> Clases { get; set; }
         public virtual DbSet<Intrebari> Intrebaris { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Evenimente> Evenimentes { get; set; }
     }
 }

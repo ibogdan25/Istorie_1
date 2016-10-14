@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="IstorieModel.Intrebari" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IstorieModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="IstorieModel.FK_Clase_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IstorieModel.Evenimente" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

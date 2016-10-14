@@ -6,15 +6,30 @@
         xmlns:local="clr-namespace:Istorie.Windows"
         xmlns:FlowGraph="clr-namespace:Microsoft.Expression.Prototyping.FlowGraph;assembly=Microsoft.Expression.Prototyping.Runtime" x:Class="Istorie.Windows.MeniuPrincipal"
         mc:Ignorable="d"
-        Title="Invata inteligent" Height="400" Width="600" Icon="/Istorie;component/Images/Icondesigner.net-Hyperion-Sidebar-Library.ico">
+        Title="Invata inteligent" Height="500" Width="600" Icon="/Istorie;component/Images/Icondesigner.net-Hyperion-Sidebar-Library.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Top" Margin="5,15,0,0">
-            <Image Source="/Istorie;component/Images/Places-user-identity-icon.png" Width="50" Height="50"></Image>
-            <Label x:Name="mesajDeIntampinare" VerticalAlignment="Center" >Bine ai venit, </Label>
+        <StackPanel Grid.Column="0">
+            <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" Margin="5,15,0,0">
+                <Image Source="/Istorie;component/Images/Places-user-identity-icon.png" Width="50" Height="50"></Image>
+                <Label x:Name="mesajDeIntampinare" VerticalAlignment="Center" >Bine ai venit,</Label>
+            </StackPanel>
+            <StackPanel Margin="10,5,0,0">
+                <Label HorizontalAlignment="Left">Selecteaza data evenimentului</Label>
+                <Calendar x:Name="dataEveniment" HorizontalAlignment="Left" SelectionMode="SingleDate" SelectedDatesChanged="dataEveniment_SelectedDatesChanged" ></Calendar>
+                <ScrollViewer Height="190">
+                    <StackPanel x:Name="evenimente" >
+                        <!--Aici adaug evenimentele-->
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="meniu" Grid.Column="1">
+            <Button x:Name="addEveniment" Margin="20,5,20,5" Click="addEveniment_Click" >Adauga evenimente</Button>
+            <Button x:Name="modifEveniment" Margin="20,5,20,5">Editeaza evenimente</Button>
         </StackPanel>
     </Grid>
 </Window>
