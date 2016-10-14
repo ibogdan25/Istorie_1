@@ -11,14 +11,31 @@ namespace Istorie
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Clases = new HashSet<Clase>();
+        }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int userId { get; set; }
         public string name { get; set; }
         public string fullName { get; set; }
         public string pass { get; set; }
         public string email { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
+        public int role { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Clase> Clases { get; set; }
+        enum rol
+        {
+            Elev = 1,
+            Profesor = 2,
+            Admin = 3
+        }
     }
 }

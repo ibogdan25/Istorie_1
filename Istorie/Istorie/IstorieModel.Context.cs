@@ -25,6 +25,7 @@ namespace Istorie
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Clase> Clases { get; set; }
         public virtual DbSet<Intrebari> Intrebaris { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }

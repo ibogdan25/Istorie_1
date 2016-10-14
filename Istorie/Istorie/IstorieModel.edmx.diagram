@@ -4,9 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f4f2d82417b04283b1957801e7fa0f1a" Name="Diagram1">
-        <EntityTypeShape EntityType="IstorieModel.Intrebari" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IstorieModel.User" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="226382e23f4a4fa4b2cb3b9e0d65b8f7" Name="Diagram1">
+        <EntityTypeShape EntityType="IstorieModel.Clase" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IstorieModel.Intrebari" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IstorieModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="IstorieModel.FK_Clase_User" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Istorie.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,14 +23,9 @@ namespace Istorie.Windows
         public MeniuPrincipal()
         {
             InitializeComponent();
+            mesajDeIntampinare.Content = mesajDeIntampinare.Content + UserActual.user.fullName+"!";
         }
 
-        private void listaIntrebariBttn_Click(object sender, RoutedEventArgs e)
-        {
-            Hide();
-            ListaIntrebari form = new ListaIntrebari();
-            form.ShowDialog();
-            Show();
-        }
+        
     }
 }

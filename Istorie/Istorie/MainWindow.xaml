@@ -19,8 +19,9 @@
                 <Label HorizontalAlignment="Center" Margin="0,20,0,0">Nume</Label>
                 <TextBox Width="150" Height="25" x:Name="numeUtilizator">bogdan</TextBox>
                 <Label HorizontalAlignment="Center">Parola</Label>
-                <TextBox Width="150" Height="25" x:Name="parolaUtilizator">bogdan</TextBox>
+                <PasswordBox Width="150" Height="25" x:Name="parolaUtilizator"></PasswordBox>
                 <Button Margin="0,20,0,0" Width="100" Height="31" x:Name="connect_bttn" Click="connect_bttn_Click">Conectare</Button>
+                <Label x:Name="registerLabel" Margin="120,10,0,0" MouseDoubleClick="registerLabel_MouseDoubleClick">Nu ai cont? Dublu click aici</Label>
             </StackPanel>
         </Grid>
     </Grid>

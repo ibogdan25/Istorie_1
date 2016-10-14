@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="IstorieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Clase">
+    <Key>
+      <PropertyRef Name="clasaId" />
+    </Key>
+    <Property Name="clasaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uniqueCode" Type="Int32" Nullable="false" />
+    <Property Name="descriere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Clase_User" FromRole="Clase" ToRole="User" />
+  </EntityType>
   <EntityType Name="Intrebari">
     <Key>
       <PropertyRef Name="intrebareId" />
-      <PropertyRef Name="text" />
-      <PropertyRef Name="raspunsuri" />
-      <PropertyRef Name="varianteCorecte" />
     </Key>
     <Property Name="intrebareId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -15,10 +23,6 @@
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="userId" />
-      <PropertyRef Name="name" />
-      <PropertyRef Name="fullName" />
-      <PropertyRef Name="pass" />
-      <PropertyRef Name="email" />
     </Key>
     <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -26,9 +30,28 @@
     <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="birthday" Type="DateTime" Precision="3" />
+    <Property Name="role" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Clases" Relationship="Self.FK_Clase_User" FromRole="User" ToRole="Clase" />
   </EntityType>
+  <Association Name="FK_Clase_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="Clase">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="IstorieEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clases" EntityType="Self.Clase" />
     <EntitySet Name="Intrebaris" EntityType="Self.Intrebari" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Clase_User" Association="Self.FK_Clase_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Clase" EntitySet="Clases" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

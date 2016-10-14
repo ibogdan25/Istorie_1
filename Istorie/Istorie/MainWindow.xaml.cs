@@ -35,11 +35,12 @@ namespace Istorie
         {
             using(IstorieEntities context=new IstorieEntities())
             {
-                var query = (from c in context.Users
-                             where c.name == numeUtilizator.Text && c.pass == parolaUtilizator.Text
-                             select c).Count();
-                if (query > 0)
+                var user = (from c in context.Users
+                             where c.name == numeUtilizator.Text && c.pass == parolaUtilizator.Password
+                             select c).FirstOrDefault();
+                if (user!=null)
                 {
+                    UserActual.user = (User)user;
                     MeniuPrincipal form = new MeniuPrincipal();
                     this.Hide();
                     form.ShowDialog();
@@ -50,6 +51,14 @@ namespace Istorie
                 }
             }
             
+        }
+
+        private void registerLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Register form = new Register();
+            Hide();
+            form.ShowDialog();
+            this.Close();
         }
     }
 }

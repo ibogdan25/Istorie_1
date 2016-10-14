@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="IstorieModelStoreContainer" CdmEntityContainer="IstorieEntities">
+    <EntitySetMapping Name="Clases">
+      <EntityTypeMapping TypeName="IstorieModel.Clase">
+        <MappingFragment StoreEntitySet="Clase">
+          <ScalarProperty Name="clasaId" ColumnName="clasaId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="uniqueCode" ColumnName="uniqueCode" />
+          <ScalarProperty Name="descriere" ColumnName="descriere" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Intrebaris">
       <EntityTypeMapping TypeName="IstorieModel.Intrebari">
         <MappingFragment StoreEntitySet="Intrebari">
@@ -20,6 +31,7 @@
           <ScalarProperty Name="pass" ColumnName="pass" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="role" ColumnName="role" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
