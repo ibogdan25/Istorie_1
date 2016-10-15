@@ -23,45 +23,99 @@ namespace Istorie.Windows
         {
             InitializeComponent();
         }
-
+        Evenimente evenimentInitial;
+        public AddEveniment(Evenimente _eveniment)
+        {
+            InitializeComponent();
+            evenimentInitial = _eveniment;
+            textEveniment.AppendText(evenimentInitial.text);
+            anEveniment.Text = evenimentInitial.data.Value.Year.ToString();
+            isDHr.IsChecked = evenimentInitial.isDHr;
+            if (!(bool)isDHr.IsChecked) isIHr.IsChecked = true;
+            evenimentData.SelectedDate = evenimentInitial.data;
+        }
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            using(IstorieEntities context=new IstorieEntities())
+            if (evenimentInitial == null)
             {
-                try {
-                    Evenimente eveniment = new Evenimente();
-                    DateTime evenimentDateTime = (DateTime)(evenimentData.SelectedDate == null ? DateTime.Now : evenimentData.SelectedDate);
-                    int an = 0;
-                    int an_1 = evenimentDateTime.Year;
+                using (IstorieEntities context = new IstorieEntities())
+                {
                     try
                     {
-                        an = int.Parse(anEveniment.Text.ToString());
+                        Evenimente eveniment = new Evenimente();
+                        DateTime evenimentDateTime = (DateTime)(evenimentData.SelectedDate == null ? DateTime.Now : evenimentData.SelectedDate);
+                        int an = 0;
+                        int an_1 = evenimentDateTime.Year;
+                        try
+                        {
+                            an = int.Parse(anEveniment.Text.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Anul nu are formatul corespunzator.");
+                            return;
+                        }
+                        evenimentDateTime = evenimentDateTime.AddYears(an);
+                        evenimentDateTime = evenimentDateTime.AddYears(-an_1);
+                        eveniment.data = evenimentDateTime;
+                        TextRange text = new TextRange(textEveniment.Document.ContentStart, textEveniment.Document.ContentEnd);
+                        if (text.Text.Length < 10)
+                        {
+                            MessageBox.Show("Lungimea textului trebuie sa fie mai mare sau egala cu 10");
+                            return;
+                        }
+                        eveniment.text = text.Text;
+                        eveniment.isDHr = (bool)isDHr.IsChecked;
+                        context.Evenimentes.Add(eveniment);
+                        context.SaveChanges();
+                        MessageBox.Show("Eveniment adaugat cu succes.");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Anul nu are formatul corespunzator.");
-                        return;
+                        MessageBox.Show(ex.ToString());
                     }
-                    evenimentDateTime = evenimentDateTime.AddYears(an);
-                    evenimentDateTime = evenimentDateTime.AddYears(-an_1);
-                    eveniment.data =evenimentDateTime;
-                    TextRange text = new TextRange(textEveniment.Document.ContentStart, textEveniment.Document.ContentEnd);
-                    if (text.Text.Length < 10)
-                    {
-                        MessageBox.Show("Lungimea textului trebuie sa fie mai mare sau egala cu 10");
-                        return;
-                    }
-                    eveniment.text = text.Text;
-                    eveniment.isDHr = (bool)isDHr.IsChecked;
-                    context.Evenimentes.Add(eveniment);
-                    context.SaveChanges();
-                    MessageBox.Show("Eveniment adaugat cu succes.");
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
 
+                }
+            }
+            else
+            {
+                using (IstorieEntities context=new IstorieEntities())
+                {
+                    try {
+                        DateTime evenimentDateTime = (DateTime)(evenimentData.SelectedDate == null ? DateTime.Now : evenimentData.SelectedDate);
+                        int an = 0;
+                        int an_1 = evenimentDateTime.Year;
+                        try
+                        {
+                            an = int.Parse(anEveniment.Text.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Anul nu are formatul corespunzator.");
+                            return;
+                        }
+                        TextRange text = new TextRange(textEveniment.Document.ContentStart, textEveniment.Document.ContentEnd);
+                        if (text.Text.Length < 10)
+                        {
+                            MessageBox.Show("Lungimea textului trebuie sa fie mai mare sau egala cu 10");
+                            return;
+                        }
+                        var entry = context.Entry(evenimentInitial);
+                        if (entry.State == System.Data.Entity.EntityState.Detached)
+                        {
+                            context.Evenimentes.Attach(evenimentInitial);
+                        }
+                        evenimentInitial.text = text.Text;
+                        evenimentInitial.isDHr = isDHr.IsChecked;
+                        evenimentInitial.data = evenimentData.SelectedDate;
+                        context.SaveChanges();
+                        MessageBox.Show("Eveniment modificat cu succes.");
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
             }
         }
 

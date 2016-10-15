@@ -71,6 +71,7 @@ namespace Istorie.Windows
             ModifEveniment form = new ModifEveniment();
             this.Hide();
             form.ShowDialog();
+            incarcaEvenimente();
             this.ShowDialog();
         }
     }

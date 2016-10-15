@@ -50,7 +50,12 @@ namespace Istorie.Windows
         }
         private void modifButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Button modifButton = (Button)sender;
+            AddEveniment form = new AddEveniment((Evenimente)modifButton.Tag);
+            this.Hide();
+            form.ShowDialog();
+            incarca();
+            ShowDialog();
         }
         public void incarca()
         {
@@ -87,6 +92,7 @@ namespace Istorie.Windows
                     modifButton.Height = 27;
                     modifButton.Content = "Modifica";
                     modifButton.Tag = eveniment;
+                    modifButton.Click += new RoutedEventHandler(modifButton_Click);
                     modifButton.Margin = new Thickness(2, 0, 10, 2);
                     stack.Children.Add(modifButton);
 
