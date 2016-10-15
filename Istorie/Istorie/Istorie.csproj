@@ -146,6 +146,9 @@
     <Compile Include="Windows\MeniuPrincipal.xaml.cs">
       <DependentUpon>MeniuPrincipal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ModifEveniment.xaml.cs">
+      <DependentUpon>ModifEveniment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MeniuPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ModifEveniment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

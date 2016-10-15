@@ -51,21 +51,27 @@ namespace Istorie.Windows
         {
             using (IstorieEntities context = new IstorieEntities())
             {
-                evenimente.Children.Clear();
+                evenimentePanel.Children.Clear();
                 var query = (from x in context.Evenimentes
                              where x.data.Value.Month == dataEveniment.SelectedDate.Value.Month && x.data.Value.Day == dataEveniment.SelectedDate.Value.Day
                              select x).ToList();
                 foreach (var eveniment in query)
                 {
-                    //Label
-                    Label label = new Label();
-                    TextBlock text = new TextBlock();
-                    text.Text = eveniment.data.Value.Year + " : " + eveniment.text;
-                    text.TextWrapping = TextWrapping.Wrap;
-                    label.Content = text;
-                    evenimente.Children.Add(label);
+                    //TextBlock
+                    TextBlock textBlock = new TextBlock();
+                    textBlock.Text = eveniment.data.Value.Year + " : " + eveniment.text;
+                    textBlock.TextWrapping = TextWrapping.Wrap;
+                    evenimentePanel.Children.Add(textBlock);
                 }
             }
+        }
+
+        private void modifEveniment_Click(object sender, RoutedEventArgs e)
+        {
+            ModifEveniment form = new ModifEveniment();
+            this.Hide();
+            form.ShowDialog();
+            this.ShowDialog();
         }
     }
 }

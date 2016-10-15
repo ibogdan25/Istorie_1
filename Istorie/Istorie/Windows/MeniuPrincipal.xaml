@@ -21,7 +21,7 @@
                 <Label HorizontalAlignment="Left">Selecteaza data evenimentului</Label>
                 <Calendar x:Name="dataEveniment" HorizontalAlignment="Left" SelectionMode="SingleDate" SelectedDatesChanged="dataEveniment_SelectedDatesChanged" ></Calendar>
                 <ScrollViewer Height="190">
-                    <StackPanel x:Name="evenimente" >
+                    <StackPanel x:Name="evenimentePanel" >
                         <!--Aici adaug evenimentele-->
                     </StackPanel>
                 </ScrollViewer>
@@ -29,7 +29,8 @@
         </StackPanel>
         <StackPanel x:Name="meniu" Grid.Column="1">
             <Button x:Name="addEveniment" Margin="20,5,20,5" Click="addEveniment_Click" >Adauga evenimente</Button>
-            <Button x:Name="modifEveniment" Margin="20,5,20,5">Editeaza evenimente</Button>
+            <Button x:Name="modifEveniment" Margin="20,5,20,5" Click="modifEveniment_Click">Editeaza evenimente</Button>
+            <Button x:Name="claseleMele" Margin="20,5,20,5">Clasele mele</Button>
         </StackPanel>
     </Grid>
 </Window>

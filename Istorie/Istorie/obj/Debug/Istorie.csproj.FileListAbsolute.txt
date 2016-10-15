@@ -228,3 +228,5 @@ C:\Users\Bogdan.Ilie\Documents\GitHub\Istorie_1\Istorie\Istorie\obj\Debug\Istori
 C:\Users\Bogdan.Ilie\Documents\GitHub\Istorie_1\Istorie\Istorie\obj\Debug\Istorie.exe
 C:\Users\Bogdan.Ilie\Documents\GitHub\Istorie_1\Istorie\Istorie\obj\Debug\Istorie.pdb
 C:\Users\Bogdan.Ilie\Documents\GitHub\Istorie_1\Istorie\Istorie\obj\Debug\Istorie.csprojResolveAssemblyReference.cache
+C:\Users\Bogdan.Ilie\Documents\GitHub\Istorie_1\Istorie\Istorie\obj\Debug\Windows\ModifEveniment.g.cs
+C:\Users\Bogdan.Ilie\Documents\GitHub\Istorie_1\Istorie\Istorie\obj\Debug\Windows\ModifEveniment.baml
